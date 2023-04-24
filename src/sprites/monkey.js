@@ -30,34 +30,28 @@ export default class Monkey extends Phaser.Physics.Arcade.Sprite {
             repeat      : 0
         });
 
-        let bone      = scene.add.particles('bone');
-
-        this.bones     = bone.createEmitter({
-            frame: [0,1,2,3,4,5,6,7],
-            speed: 750,
-            on: false
+        this.bones      = scene.add.particles(0, 0, 'bone', {
+            frame       : [0,1,2,3,4,5,6,7],
+            speed       : 750,
+            emitting    : false
         });
 
         this.bones.startFollow( this );
 
-        let muscle      = scene.add.particles('muscle');
-
-        this.muscles     = muscle.createEmitter({
-            frame: [0,1,2,3,4,5,6,7],
-            speed: 1500,
-            on: false
+        this.muscles    = scene.add.particles(0, 0, 'muscle', {
+            frame       : [0,1,2,3,4,5,6,7],
+            speed       : 1500,
+            emitting    : false
         });
 
         this.muscles.startFollow( this );
         
-        let explosion   = scene.add.particles('explosion');
-
-        this.explosionFlash     = explosion.createEmitter({
+        this.explosionFlash     = scene.add.particles(0, 0, 'explosion', {
             frame       : 'muzzleflash2',
             lifespan    : 200,
             scale       : { start: 4, end: 0 },
             rotate      : { start: 0, end: 180 },
-            on          : false
+            emitting    : false
         });
 
         this.explosionFlash.startFollow( this );
