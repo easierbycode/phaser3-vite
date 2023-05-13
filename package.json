@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"start": "vite",
-		"build": "vite build --outDir=docs --assetsInlineLimit=0",
+		"build": "vite build --outDir=docs --assetsInlineLimit=0 --base=/phaser3-vite/",
 		"preview": "vite preview"
 	},
 	"devDependencies": {
