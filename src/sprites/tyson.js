@@ -14,14 +14,72 @@ export default class Tyson extends Phaser.Physics.Arcade.Sprite {
             frameRate   : 3,
             frames      : scene.anims.generateFrameNumbers('tyson', {
                 start   : 0,
-                end     : 2,
-                first   : 0
+                end     : 2
             }),
             key         : 'shuffle',
-            repeat      : -1
+            repeat      : 3
+        })
+
+        scene.anims.create({
+            frameRate   : 9,
+            frames      : scene.anims.generateFrameNumbers('tyson', {
+                start   : 9,
+                end     : 12
+            }),
+            key         : 'uppercut'
+        })
+
+        scene.anims.create({
+            frameRate   : 6,
+            frames      : scene.anims.generateFrameNumbers('tyson', {
+                start   : 5,
+                end     : 6
+            }),
+            key         : 'winkLeft'
+        })
+
+        scene.anims.create({
+            frameRate   : 6,
+            frames      : scene.anims.generateFrameNumbers('tyson', {
+                start   : 3,
+                end     : 4
+            }),
+            key         : 'winkRight',
+            yoyo        : true
+        })
+
+        scene.anims.create({
+            frameRate   : 6,
+            frames      : scene.anims.generateFrameNumbers('tyson', {
+                start   : 7,
+                end     : 8
+            }),
+            key         : 'bodyBlow'
         })
 
         scene.add.existing( this )
+
+        this.on('animationcomplete', (anim, frame) => this.emit('animationcomplete_' + anim.key, anim, frame))
+
+        this.on('animationcomplete_winkLeft', (anim) => {
+            this.play( 'uppercut' )
+        })
+
+        this.on('animationcomplete_bodyBlow', (anim) => {
+            this.play( 'winkLeft' )
+        })
+
+        this.on('animationcomplete_winkRight', (anim) => {
+            this.play( 'bodyBlow' )
+        })
+        
+        this.on('animationcomplete_shuffle', (anim) => {
+            this.play( 'winkRight' )
+        })
+
+        this.on('animationcomplete_uppercut', (anim) => {
+            this.play( 'shuffle' )
+        })
 
         this.play( 'shuffle' )
 
