@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"start": "vite",
-		"build": "vite build",
+		"build": "vite build --outDir=docs --assetsInlineLimit=0",
 		"preview": "vite preview"
 	},
 	"devDependencies": {
