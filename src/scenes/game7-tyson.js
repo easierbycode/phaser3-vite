@@ -1,6 +1,8 @@
 
 import Phaser from 'phaser'
 import tyson from '../assets/tyson.png'
+import monkey from '../assets/monkey.png'
+import Monkey from '../sprites/monkey'
 import Tyson from '../sprites/tyson'
 
 
@@ -10,6 +12,8 @@ export default class Game extends Phaser.Scene {
     }
 
     preload() {
+        this.load.image('monkey', monkey)
+
         this.load.spritesheet('tyson', tyson, {
             frameWidth  : 55,
             frameHeight : 122,
@@ -20,8 +24,16 @@ export default class Game extends Phaser.Scene {
     create() {
         this.tyson = new Tyson({
             scene   : this,
-            x       : (this.game.config.width - 27),
-            y       : (this.game.config.height - 61)
+            x       : (this.game.config.width - 27) - 20,
+            y       : (this.game.config.height - 61) - 50
         })
+
+        this.monkey = new Monkey({
+            scene: this,
+            x: this.game.config.width,
+            y: this.game.config.height
+          })
+    
+        this.monkey.x -= this.monkey.displayWidth/2
     }
 }
