@@ -62,7 +62,18 @@ export default class Tyson extends Phaser.Physics.Arcade.Sprite {
         this.on('animationcomplete', (anim, frame) => this.emit('animationcomplete_' + anim.key, anim, frame))
 
         this.on('animationcomplete_winkLeft', (anim) => {
-            this.play( 'uppercut' )
+            // tween tyson to bottom of y axis
+            scene.tweens.add({
+                targets: this,
+                y: "+=50",
+                duration: 400,
+                ease: 'sine.out',
+                yoyo: true,
+                callback: () => {
+                    this.play( 'uppercut' )
+                }
+            })
+            // this.play( 'uppercut' )
         })
 
         this.on('animationcomplete_bodyBlow', (anim) => {
