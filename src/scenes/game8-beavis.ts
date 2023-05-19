@@ -10,6 +10,9 @@ import Beavis from '../sprites/beavis'
 
 
 export default class Game extends Phaser.Scene {
+    
+    private monkey: Phaser.Physics.Arcade.Sprite
+    
     constructor() {
         super({ key: 'Game' })
     }
@@ -45,12 +48,11 @@ export default class Game extends Phaser.Scene {
     
         this.monkey.x -= this.monkey.displayWidth/2
 
-        this.beavis = new Beavis({
+        const beavis = new Beavis({
             scene   : this,
-            x       : ((this.game.config.width - 30) + 13) - this.monkey.displayWidth/2,
-            y       : (this.game.config.height - 45)
+            x       : ((+this.game.config.width - 30) + 13) - this.monkey.displayWidth/2,
+            y       : (+this.game.config.height - 45),
+            victim  : this.monkey
         })
-
-        window.scene = this
     }
 }

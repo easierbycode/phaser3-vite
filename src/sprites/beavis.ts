@@ -3,6 +3,9 @@ import Phaser from 'phaser'
 
 
 export default class Beavis extends Phaser.Physics.Arcade.Sprite {
+    
+    private victim: Phaser.Physics.Arcade.Sprite
+    
     constructor({scene, x, y, victim}) {
         super(scene, x, y, 'beavis')
 
@@ -10,7 +13,8 @@ export default class Beavis extends Phaser.Physics.Arcade.Sprite {
 
         scene.physics.add.existing( this )
 
-        scene.anims.create({
+
+        const animConfig: Phaser.Types.Animations.Animation = {
             frameRate   : 3,
             frames      : scene.anims.generateFrameNumbers('beavis', {
                 start   : 2,
@@ -18,14 +22,15 @@ export default class Beavis extends Phaser.Physics.Arcade.Sprite {
             }),
             key         : 'saw',
             repeat      : 3
-        })
+        }
+        scene.anims.create( animConfig )
 
         scene.add.existing( this )
 
         this.on('animationcomplete', (anim, frame) => this.emit('animationcomplete_' + anim.key, anim, frame))
 
         this.on('animationcomplete_saw', () => {
-            this.scene.monkey.destroy()
+            this.victim.destroy()
         })
 
         this.play( 'saw' )
