@@ -8,6 +8,7 @@ import LiuKang from './scenes/game4-liu-kang';
 import RainbowDash from './scenes/game4-rainbow-dash';
 import BowserAndPeach from './scenes/game6-bowser-and-peach';
 import MikeTyson from './scenes/game7-tyson'
+import Beavis from './scenes/game8-beavis'
 
 
 window.Phaser = Phaser;
@@ -32,7 +33,8 @@ const config = {
     // LiuKang
     // RainbowDash
     // BowserAndPeach
-    MikeTyson
+    // MikeTyson
+    Beavis
   ],
   pixelArt: true,
   antialias: false
