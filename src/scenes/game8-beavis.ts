@@ -4,6 +4,7 @@ import blood from '../assets/blood.png'
 import muscle from '../assets/muscle.png'
 import bone from '../assets/bone.png'
 import beavis from '../assets/beavis.png'
+import beavis2 from '../assets/beavis2.png'
 import monkey from '../assets/monkey.png'
 import Monkey from '../sprites/monkey'
 import Beavis from '../sprites/beavis'
@@ -23,6 +24,10 @@ export default class Game extends Phaser.Scene {
         this.load.spritesheet('beavis', beavis, {
             frameWidth  : 61,
             frameHeight : 90
+        })
+        this.load.spritesheet('beavis2', beavis2, {
+            frameWidth  : 49,
+            frameHeight : 91
         })
         this.load.spritesheet('blood', blood, {
             frameWidth  : 88,
